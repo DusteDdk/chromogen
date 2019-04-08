@@ -1,0 +1,56 @@
+body {
+	background-color: black;
+	background-image: url("bg.png"); 
+	margin: 0px;
+}
+h1 {
+	text-align: center;
+	font-size: 600%;
+	color: white;
+	font-family: sans-serif;
+	font-stretch: ultra-condensed;
+	margin-top: 35vh;
+}
+.art {
+	object-fit: contain;
+	display: block;
+	max-height: 65vh;
+	max-width: 65vw;
+	box-shadow: 3px 3px 5px 6px black;
+	background-color: black;
+	margin-bottom: 35vh;
+	margin-top: 35vh;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.full {
+	object-fit: contain;
+	display: block;
+	max-height: 100vh;
+	max-width: 100vw;
+	background-color: black;
+	margin-left: auto;
+	margin-right: auto;
+}
+.foot {
+	text-align:center;
+	margin-top:5vh;
+	margin-bottom: 2vh;
+}
+
+.bundle {
+	text-align:center;
+	margin-top:4vh;
+	margin-bottom:2vh;
+}
+
+.bundle a {
+	font-size: 110%;
+}
+
+a {
+	color: darkgray;
+	font-size: 70%;
+	text-decoration: none;
+}
