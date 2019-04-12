@@ -10,6 +10,9 @@ DESTINATION_DIR="out"
 # (true/false) Create a package (bundle.zip) containing all full-size images and place download-link at top of gallery.
 ALLOW_DOWNLOAD_BUNDLE=true
 
+# (true/false) Strip profiles/comments from image (full-size only, always stripped in previews)
+STRIP=false
+
 # (number, 0 or larger) Cut first N characters from filename, useful if files in SOURCE_DIR are ordered by filename, set to 4 if your files are named like '000_test.jpg', set to 0 to disable.
 CUT_FIRST_CHARACTERS=0
 

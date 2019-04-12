@@ -7,13 +7,15 @@ else
 	CONF_FILE="$1"
 fi
 
+echo "Using configuration: '$CONF_FILE'"
+
 if [ ! -f "$CONF_FILE" ]
 then
 	echo "Configuration file '$CONF_FILE' not found."
 	exit 1
 fi
 
-source config.sh
+source "$CONF_FILE"
 
 if [ ! -d "$SOURCE_DIR" ]
 then
@@ -44,13 +46,20 @@ else
 	mkdir "$DESTINATION_DIR" "$DESTINATION_DIR/pre" "$DESTINATION_DIR/full"
 fi
 
+if $STRIP
+then
+	STRIP="-strip"
+else
+	STRIP=""
+fi
+
 ALT=""
 LIST=""
 C=0
+
 echo "Processing images..."
 for F in ${pics[@]}
 do
-	((C++))
 	N="${F%.*}"
 	N="${N:$CUT_FIRST_CHARACTERS}"
 	NF="${N}.jpg"
@@ -61,7 +70,7 @@ do
 	then
 		cp "$SOURCE_DIR/$F" $DESTINATION_DIR/full/$NF
 	else
-		convert -resize $FULL_SIZE_PIX@\> -quality $FULL_JPEG_QUALITY% -strip "$SOURCE_DIR/$F" $DESTINATION_DIR/full/$NF
+		convert -resize $FULL_SIZE_PIX@\> -quality $FULL_JPEG_QUALITY% $STRIP "$SOURCE_DIR/$F" $DESTINATION_DIR/full/$NF
 	fi
 	if $SHOW_ALT_TEXT
 	then
@@ -80,7 +89,7 @@ then
 	echo "Generating bundle..."
 	zip -r -1 -q "$BUNDLE_NAME" full
 	SIZE=`du -h "$BUNDLE_NAME" | cut -f 1`
-	BUNDLE='<div class="bundle"><a class="bundle" href="'$BUNDLE_NAME'">Download all '$C' images ( '$SIZE' \)<\/a><\div>'
+	BUNDLE='<div class="bundle"><a class="bundle" href="'$BUNDLE_NAME'">Download all '${#pics[@]}' images ( '$SIZE' \)<\/a><\div>'
 	popd &> /dev/null
 fi
 
