@@ -1,6 +1,8 @@
 # What :: chromogen
 Static image gallery generator, for generating galleries like [Chromophiliat](https://chromophiliat.dk/).
 
+See it in action: https://www.youtube.com/watch?v=L5J7-dhq4Is
+
 No server-side scripts, no client-side scripts, just static, pure, blissful HTML with a dash of CSS.
 
 The generated galleries are self-contained, and can be moved around and hosted how ever you want, where ever you want, by whatever server you want.
