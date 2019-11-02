@@ -65,12 +65,12 @@ do
 	NF="${N}.jpg"
 	EX="${F##*.}"
 	echo $F...
-	convert -resize $PRE_SIZE_PIX@\> -quality $PRE_JPEG_QUALITY% -strip "$SOURCE_DIR/$F" $DESTINATION_DIR/pre/$NF
+	convert -resize $PRE_SIZE_PIX@\> -quality $PRE_JPEG_QUALITY% -strip -auto-orient "$SOURCE_DIR/$F" $DESTINATION_DIR/pre/$NF
 	if $FULL_QUALITY
 	then
 		cp "$SOURCE_DIR/$F" $DESTINATION_DIR/full/$NF
 	else
-		convert -resize $FULL_SIZE_PIX@\> -quality $FULL_JPEG_QUALITY% $STRIP "$SOURCE_DIR/$F" $DESTINATION_DIR/full/$NF
+		convert -resize $FULL_SIZE_PIX@\> -quality $FULL_JPEG_QUALITY% $STRIP -auto-orient "$SOURCE_DIR/$F" $DESTINATION_DIR/full/$NF
 	fi
 	if $SHOW_ALT_TEXT
 	then
